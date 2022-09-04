@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,
+    wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" 
+    rel="stylesheet" />
+    <!-- Google Fonts -->
+    <title>Cruds App</title>
+  </head>
+  <body>
+    <div class="crud">
+      <header>
+        <h1>Curd</h1>
+        <p>PRODUCT MANEGMENT SYSTEM</p>
+      </header>
+
+      <div class="inputs">
+        <input type="text" placeholder="Title" id="title" />
+
+        <div class="prices-container">
+          <input onkeyup="getTotal()" type="number" id="price" placeholder="Price" />
+          <input onkeyup="getTotal()" type="number" id="taxes" placeholder="Taxes" />
+          <input onkeyup="getTotal()" type="number" id="ads" placeholder="Ads-costs" />
+          <input onkeyup="getTotal()" type="number" id="discount" placeholder="Discount" />
+          <small id="total"></small>
+        </div>
+
+        <input type="number" id="count" placeholder="Count" />
+        <input type="text" id="category" placeholder="Category" />
+        <button id="submit" onclick="createProduct()">Create</button>
+      </div>
+
+      <div class="outputs">
+        <div class="search-container">
+          <input type="text" id="search" placeholder="Search" />
+          <div class="btn-search">
+            <button id="searchTitle">Search by Title</button>
+            <button id="searchCategory">Search by Category</button>
+          </div>
+        </div>
+      </div>
+      
+      <div id="deleteAllContainer"></div>
+      <table>
+        <tr>
+          <th>id</th>
+          <th>title</th>
+          <th>price</th>
+          <th>taxes</th>
+          <th>ads</th>
+          <th>discount</th>
+          <th>total</th>
+          <th>category</th>
+          <th>update</th>
+          <th>delete</th>
+        </tr>
+
+        <tbody id="tbody">
+          <!-- <tr>
+            <td>1</td>
+            <td>Samsung</td>
+            <td>100</td>
+            <td>200</td>
+            <td>200</td>
+            <td>500</td>
+            <td>700</td>
+            <td>Phone</td>
+            <td><button id="update">update</button></td>
+            <td><button id="delete">delete</button></td>
+          </tr>
+
+          <tr>
+            <td>1</td>
+            <td>Samsung</td>
+            <td>100</td>
+            <td>200</td>
+            <td>200</td>
+            <td>500</td>
+            <td>700</td>
+            <td>Phone</td>
+            <td><button id="update">update</button></td>
+            <td><button id="delete">delete</button></td>
+          </tr>
+
+          <tr>
+            <td>1</td>
+            <td>Samsung</td>
+            <td>100</td>
+            <td>200</td>
+            <td>200</td>
+            <td>500</td>
+            <td>700</td>
+            <td>Phone</td>
+            <td><button id="update">update</button></td>
+            <td><button id="delete">delete</button></td>
+          </tr>
+
+          <tr>
+            <td>1</td>
+            <td>Samsung</td>
+            <td>100</td>
+            <td>200</td>
+            <td>200</td>
+            <td>500</td>
+            <td>700</td>
+            <td>Phone</td>
+            <td><button id="update">update</button></td>
+            <td><button id="delete">delete</button></td>
+          </tr> -->
+        </tbody>
+      </table>
+    </div>
+
+    <script src="./templates.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
