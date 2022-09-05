@@ -5,11 +5,10 @@ if (localStorage.product != null) {
 } else {
   productsData = [];
 }
-
-
-
 let appMood = 'create';
 let index;
+let searchMood = 'title';
+
 /**
  * To calculate price, taxes, ads, discount
  */
@@ -26,14 +25,14 @@ function getTotal() {
 
 function createProduct() {
   let newProduct = {
-    title: title.value,
+    title: title.value.toLowerCase(),
     price: price.value,
     taxes: taxes.value,
     ads: ads.value,
     discount: discount.value,
     total: total.innerHTML,
     count: count.value,
-    category: category.value,
+    category: category.value.toLowerCase(),
   };
 
   if (appMood === 'create') {
@@ -73,7 +72,7 @@ function renderProducts() {
   let table = document.getElementById('tbody');
   table.innerHTML = '';
   for (let i = 0; i < productsData.length; i++) {
-    const element = productsData[i];
+    let element = productsData[i];
     table.innerHTML += renderProductsHTML(element, i);
   }
   renderDeleteAll();
@@ -118,6 +117,37 @@ function updateProduct(i) {
     top: 0,
     behavior: 'smooth',
   });
+}
+
+function getSearchMood(id) {
+  let search = document.getElementById('search');
+  if (id === 'searchTitle') {
+    searchMood = 'title';
+    search.placeholder = 'Search by Title';
+  } else {
+    searchMood = 'category';
+    search.placeholder = 'Search by Category';
+  }
+  search.focus();
+  search.value = '';
+  renderProducts();
+}
+
+function searchProduct(value) {
+  let table = document.getElementById('tbody');
+  table.innerHTML = '';
+  for (let i = 0; i < productsData.length; i++) {
+    let element = productsData[i];
+    if (searchMood === 'title') {
+      if (element.title.toLowerCase().includes(value.toLowerCase())) {
+        table.innerHTML += renderProductsHTML(element, i);
+      }
+    } else {
+      if (element.category.toLowerCase().includes(value.toLowerCase())) {
+        table.innerHTML += renderProductsHTML(element, i);
+      }
+    }
+  }
 }
 
 renderProducts();
