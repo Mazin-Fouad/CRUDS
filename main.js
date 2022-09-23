@@ -14,7 +14,7 @@ let searchMood = 'title';
  */
 function getTotal() {
   if (price.value) {
-    let totalPrice = +price.value + +taxes.value + +ads.value - +discount.value;
+    let totalPrice = (+price.value + +taxes.value + +ads.value) - +discount.value;
     total.innerHTML = `${totalPrice} €`;
     total.style.backgroundColor = '#040';
   } else {
